@@ -1,4 +1,10 @@
 package com.BookLib.Library.repository;
 
-public interface AdminRepository {
+import com.BookLib.Library.model.Admin;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AdminRepository extends JpaRepository<Admin,Long> {
+
+
+
 }

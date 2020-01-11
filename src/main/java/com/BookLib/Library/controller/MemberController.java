@@ -31,7 +31,7 @@ public class MemberController {
         Members mem = memberRepository.findname(member.getEmail());
 
         if(mem == null){
-            return "Member Already Exisits";
+            return "Member Already Exists";
         }
         member.setMoneyFunds(Constants.NEW_USER_MONEY_FUNDS);
         memberRepository.save(member);
@@ -53,7 +53,7 @@ public class MemberController {
     }
 
     @GetMapping("/view-favourites/{id}")
-    public List<Books> viewfavouriteBooks(@PathVariable(value = "id") Long id) throws Exception{
+    public List<Books> viewFavouriteBooks(@PathVariable(value = "id") Long id) throws Exception{
         Members member = memberRepository.findById(id).orElseThrow(Exception::new);
         Library lib=member.getLibrary();
         return lib.getFavouriteBooks();
@@ -94,11 +94,12 @@ public class MemberController {
         else if(members.getMoneyFunds() < books.getPrice() ){
             return "You don't have enough funds";
         }
-        else{
+        else
+            {
+
             members.deductFunds(books.getPrice());
             members.getLibrary().getCurrentBooks().add(books);
             memberRepository.save(members);
-
             return "Congrats Book has been Bought";
         }
 

@@ -17,6 +17,4 @@ public abstract class Auditable implements Serializable {
     @Setter
     private Long id;
 
-
-
 }
