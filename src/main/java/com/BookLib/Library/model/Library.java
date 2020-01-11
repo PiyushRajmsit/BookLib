@@ -9,11 +9,9 @@ import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 @Entity
 @Table(name = "library")
-public class Library{
-
+public class Library extends Auditable{
 
     @Getter
     @Setter
