@@ -1,5 +1,6 @@
 package com.BookLib.Library.controller;
 
+import com.BookLib.Library.model.Admin;
 import com.BookLib.Library.model.Books;
 import com.BookLib.Library.repository.AdminRepository;
 import com.BookLib.Library.repository.BooksRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -45,4 +47,22 @@ public class AdminController {
         bookRepository.save(book);
         return "Book price updated successfully";
     }
+
+    @GetMapping("/admins")
+    public List<Admin> getAllAdmins(){
+        return adminRepository.findAll();
+    }
+
+    @PostMapping("/admin-add/{name}/{email}")
+    public String addAdmin(@PathVariable(value = "name")String name,@PathVariable(value = "emai")String email)
+            throws Exception {
+
+        Admin admin = new Admin();
+        admin.setName(name);
+        admin.setEmail(email);
+        adminRepository.save(admin);
+
+        return "Successfully Created";
+    }
+
 }
