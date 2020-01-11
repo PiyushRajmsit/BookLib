@@ -11,7 +11,6 @@ import java.io.Serializable;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter

@@ -6,5 +6,5 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "member")
-public class Members {
+public class Members extends Auditable{
 }
