@@ -20,7 +20,7 @@ public class LoginSignup {
     @PostMapping("/signup")
     public String Signup(@Valid @RequestBody Members member) throws Exception{
 
-        Members newMember = memberRepository.findByname(member.getEmail());
+        Members newMember = memberRepository.findByEmail(member.getEmail());
 
         if(newMember != null){
             return "Member Already Exists";
@@ -33,7 +33,7 @@ public class LoginSignup {
     @PostMapping("/login/{mail}/{pwd}")
     public String Login(@Valid @PathVariable(value = "mail")String email,@Valid @PathVariable(value = "pwd")String password)
             throws Exception{
-        Members members = memberRepository.findByname(email);
+        Members members = memberRepository.findByEmail(email);
         if(members != null)
         {
             if(members.getPassword() != password)

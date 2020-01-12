@@ -14,7 +14,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Books")
-@JsonIgnoreProperties(value = {"date"},allowGetters = true)
+@JsonIgnoreProperties(value = {"date","bookStatus"},allowGetters = true)
 public class Books extends Auditable{
 
 

@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/dev")
 public class AdminController {
 
-
     @Autowired
     BooksRepository bookRepository;
     @Autowired
@@ -56,7 +55,6 @@ public class AdminController {
     @PostMapping("/admin-add/{name}/{email}")
     public String addAdmin(@PathVariable(value = "name")String name,@PathVariable(value = "emai")String email)
             throws Exception {
-
         Admin admin = new Admin();
         admin.setName(name);
         admin.setEmail(email);

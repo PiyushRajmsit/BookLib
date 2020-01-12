@@ -1,6 +1,7 @@
 package com.BookLib.Library.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "member")
+@JsonIgnoreProperties(value = {"library","moneyFunds"},allowGetters = true)
 public class Members extends Auditable {
 
     @Getter
@@ -51,7 +53,6 @@ public class Members extends Auditable {
 
     @Getter
     @Setter
-    @NotNull
     private Long moneyFunds;
 
 
