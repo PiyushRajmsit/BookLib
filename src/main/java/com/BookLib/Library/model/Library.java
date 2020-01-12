@@ -29,8 +29,12 @@ public class Library extends Auditable{
     @Getter
     @Setter
     private List<Books> favouriteBooks;
-
-
+    /*
+    @ManyToMany
+    @Getter
+    @Setter
+    private List<Books> myBooks;
+    */
     @OneToMany
     @Getter
     @Setter

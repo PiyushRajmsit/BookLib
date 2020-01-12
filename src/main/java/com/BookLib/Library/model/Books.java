@@ -63,4 +63,9 @@ public class Books extends Auditable{
     private Long price;
 
 
+    @Getter
+    @Setter
+    @NotNull
+    private BookStatus bookStatus = BookStatus.NOT_MY_BOOK;
+
 }

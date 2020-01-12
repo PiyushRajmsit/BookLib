@@ -1,10 +1,7 @@
 package com.BookLib.Library.controller;
 
 
-import com.BookLib.Library.model.Books;
-import com.BookLib.Library.model.DaysCount;
-import com.BookLib.Library.model.Library;
-import com.BookLib.Library.model.Members;
+import com.BookLib.Library.model.*;
 import com.BookLib.Library.repository.BooksRepository;
 import com.BookLib.Library.repository.Constants;
 import com.BookLib.Library.repository.MemberRepository;
@@ -46,8 +43,8 @@ public class MemberController {
     @GetMapping("/view-current-books/{id}")
     public List<Books> viewCurrentBooks(@PathVariable(value = "id") Long id) throws Exception{
         Members member = memberRepository.findById(id).orElseThrow(Exception::new);
-        Library lib = member.getLibrary();
-        return lib.getCurrentBooks();
+        List<Books> booksList = member.getLibrary().getCurrentBooks();
+        return booksList;
     }
 
     @GetMapping("/view-wish/{id}")
@@ -101,7 +98,6 @@ public class MemberController {
         }
         else
             {
-
             members.deductFunds(books.getPrice());
             DaysCount days = new DaysCount();
             days.setDays(Constants.REMAINING_DAYS_COUNT);
