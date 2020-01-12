@@ -18,23 +18,18 @@ public class Library extends Auditable{
     @ManyToMany
     @Getter
     @Setter
-    private List<Books> currentBooks;
+    private List<Books> currentBooks = new ArrayList<>();
 
     @ManyToMany
     @Getter
     @Setter
-    private List<Books> wishList;
+    private List<Books> wishList = new ArrayList<>();;
 
     @ManyToMany
     @Getter
     @Setter
-    private List<Books> favouriteBooks;
-    /*
-    @ManyToMany
-    @Getter
-    @Setter
-    private List<Books> myBooks;
-    */
+    private List<Books> favouriteBooks = new ArrayList<>();
+
     @OneToMany
     @Getter
     @Setter
