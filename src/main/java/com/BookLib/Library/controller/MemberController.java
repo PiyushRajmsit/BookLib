@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Null;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 
@@ -82,7 +85,7 @@ public class MemberController {
         return "You haven't Bought this Book or Book doesn't Exist";
     }
 
-    @PutMapping("/add-favourites/(mid}/{bid}")
+    @PutMapping("/buy-book/(mid}/{bid}")
     public String buyBook(@PathVariable(value = "mid")Long member,@PathVariable(value = "bid")Long bookId) throws Exception{
 
         Members members = memberRepository.findById(member).orElseThrow(Exception::new);
@@ -99,6 +102,7 @@ public class MemberController {
 
             members.deductFunds(books.getPrice());
             members.getLibrary().getCurrentBooks().add(books);
+            //members.getLibrary().getDaysRemaining().put(books,java.sql.Date.valueOf(LocalDate.now()));
             memberRepository.save(members);
             return "Congrats Book has been Bought";
         }

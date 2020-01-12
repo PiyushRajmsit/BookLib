@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -45,6 +46,7 @@ public class Members extends Auditable {
 
     @Getter
     @Setter
+    @OneToOne
     private Library library;
 
     @Getter
