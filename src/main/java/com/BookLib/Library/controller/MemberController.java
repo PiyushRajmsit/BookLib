@@ -2,6 +2,7 @@ package com.BookLib.Library.controller;
 
 
 import com.BookLib.Library.model.Books;
+import com.BookLib.Library.model.DaysCount;
 import com.BookLib.Library.model.Library;
 import com.BookLib.Library.model.Members;
 import com.BookLib.Library.repository.BooksRepository;
@@ -27,11 +28,11 @@ public class MemberController {
 
     @Autowired
     BooksRepository booksRepository;
-
+/*
     @PostMapping("/add")
     public String createMember(@Valid @RequestBody Members member) throws Exception{
 
-        Members mem = memberRepository.findname(member.getEmail());
+        Members mem = memberRepository.findByname(member.getEmail());
 
         if(mem == null){
             return "Member Already Exists";
@@ -40,6 +41,7 @@ public class MemberController {
         memberRepository.save(member);
         return "Member Created Successfully";
     }
+*/
 
     @GetMapping("/view-current-books/{id}")
     public List<Books> viewCurrentBooks(@PathVariable(value = "id") Long id) throws Exception{
@@ -101,8 +103,10 @@ public class MemberController {
             {
 
             members.deductFunds(books.getPrice());
+            DaysCount days = new DaysCount();
+            days.setDays(Constants.REMAINING_DAYS_COUNT);
             members.getLibrary().getCurrentBooks().add(books);
-            //members.getLibrary().getDaysRemaining().put(books,java.sql.Date.valueOf(LocalDate.now()));
+            members.getLibrary().getDaysRemaining().put(books,days);
             memberRepository.save(members);
             return "Congrats Book has been Bought";
         }

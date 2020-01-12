@@ -8,8 +8,9 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.*;
 @Entity
 @Table(name = "library")
 public class Library extends Auditable{
@@ -29,9 +30,10 @@ public class Library extends Auditable{
     @Setter
     private List<Books> favouriteBooks;
 
-    /*
+
+    @OneToMany
     @Getter
     @Setter
-    private Map<Books, Date> daysRemaining;
-    */
+    private Map<Books, DaysCount> daysRemaining;
+
 }

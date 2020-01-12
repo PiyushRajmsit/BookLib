@@ -25,7 +25,7 @@ public class AdminController {
     @PostMapping("/add")
     public String addABook(@Valid @RequestBody Books book) throws Exception {
 
-        Books bookfind = bookRepository.findBookName(book.getBookName());
+        Books bookfind = bookRepository.findByBookName(book.getBookName());
 
         if (bookfind != null) {
             return "Book Already Exists";
