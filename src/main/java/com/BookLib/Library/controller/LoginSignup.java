@@ -25,6 +25,8 @@ public class LoginSignup {
         if(newMember != null){
             return "Member Already Exists";
         }
+
+
         member.setMoneyFunds(Constants.NEW_USER_MONEY_FUNDS);
         memberRepository.save(member);
         return "Member Created Successfully";

@@ -25,20 +25,6 @@ public class MemberController {
 
     @Autowired
     BooksRepository booksRepository;
-/*
-    @PostMapping("/add")
-    public String createMember(@Valid @RequestBody Members member) throws Exception{
-
-        Members mem = memberRepository.findByname(member.getEmail());
-
-        if(mem == null){
-            return "Member Already Exists";
-        }
-        member.setMoneyFunds(Constants.NEW_USER_MONEY_FUNDS);
-        memberRepository.save(member);
-        return "Member Created Successfully";
-    }
-*/
 
     @GetMapping("/view-current-books/{id}")
     public List<Books> viewCurrentBooks(@PathVariable(value = "id") Long id) throws Exception{
@@ -84,9 +70,10 @@ public class MemberController {
         return "You haven't Bought this Book or Book doesn't Exist";
     }
 
-    @PutMapping("/buy-book/(mid}/{bid}")
+    @PostMapping("/buy-book/(mid}/{bid}")
     public String buyBook(@PathVariable(value = "mid")Long member,@PathVariable(value = "bid")Long bookId) throws Exception{
 
+        System.out.println(member + " " + bookId);
         Members members = memberRepository.findById(member).orElseThrow(Exception::new);
         Books books = booksRepository.findById(bookId).orElseThrow(Exception::new);
         if(members.getLibrary().getCurrentBooks().contains(books)){

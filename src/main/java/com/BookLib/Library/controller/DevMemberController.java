@@ -18,7 +18,7 @@ public class DevMemberController {
     @Autowired
     MemberRepository memberRepository;
     @GetMapping("/members")
-    public List<Members> getAllAdmins(){
+    public List<Members> getAllMembers(){
         return memberRepository.findAll();
     }
 }
